@@ -3,6 +3,8 @@ import useHttpLocations from 'app/hooks/useHttpLocations'
 import { WrappedTokenInfo } from 'app/state/lists/wrappedTokenInfo'
 import React, { FunctionComponent, useMemo } from 'react'
 
+import Image from '../../components/Image'
+
 import Logo, { UNKNOWN_ICON } from '../Logo'
 
 const BLOCKCHAIN = {
@@ -132,6 +134,14 @@ const CurrencyLogo: FunctionComponent<CurrencyLogoProps> = ({ currency, size = '
 
     return [UNKNOWN_ICON]
   }, [currency, uriLocations])
+
+  if (currency instanceof WrappedTokenInfo) {
+    if (currency.tokenInfo.chainId === ChainId.SGB) {
+      return (
+        <Image src={`/images/sgb/CAND.png`} width={size} height={size} alt={currency?.symbol} className={className} />
+      )
+    }
+  }
 
   return <Logo srcs={srcs} width={size} height={size} alt={currency?.symbol} className={className} style={style} />
 }

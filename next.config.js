@@ -123,17 +123,17 @@ const nextConfig = {
     defaultLocale: sourceLocale,
   },
   network: {
-    chainIds: [ChainId.ETHEREUM, ChainId.ARBITRUM],
-    defaultChainId: ChainId.ETHEREUM,
+    chainIds: [ChainId.SGB, ChainId.ARBITRUM],
+    defaultChainId: ChainId.SGB,
     domains: [
-      {
-        domain: 'sushi.com',
-        defaultChainId: ChainId.ETHEREUM,
-      },
-      {
-        domain: 'arbitrum.sushi.com',
-        defaultChainId: ChainId.ARBITRUM,
-      },
+      // {
+      //   domain: 'sushi.com',
+      //   defaultChainId: ChainId.ETHEREUM,
+      // },
+      // {
+      //   domain: 'arbitrum.sushi.com',
+      //   defaultChainId: ChainId.ARBITRUM,
+      // },
     ],
   },
   publicRuntimeConfig: {
