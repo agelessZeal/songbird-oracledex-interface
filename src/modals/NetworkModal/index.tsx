@@ -9,12 +9,11 @@ import { useActiveWeb3React } from 'app/services/web3'
 import { ApplicationModal } from 'app/state/application/actions'
 import { useModalOpen, useNetworkModalToggle } from 'app/state/application/hooks'
 // @ts-ignore TYPE NEEDS FIXING
-import cookie from 'cookie-cutter'
 import Image from 'next/image'
 import React, { FC } from 'react'
 
 export const SUPPORTED_NETWORKS: {
-  [chainId in ChainId]?: {
+  [key: number]: {
     chainId: string
     chainName: string
     nativeCurrency: {
@@ -196,6 +195,17 @@ export const SUPPORTED_NETWORKS: {
     rpcUrls: ['https://palm-mainnet.infura.io/v3/da5fbfafcca14b109e2665290681e267'],
     blockExplorerUrls: ['https://explorer.palm.io'],
   },
+  [ChainId.SGB]: {
+    chainId: '0x13',
+    chainName: 'Songbird',
+    nativeCurrency: {
+      name: 'Songbird',
+      symbol: 'SGB',
+      decimals: 18,
+    },
+    rpcUrls: ['https://rpc.sgbftso.com/http'],
+    blockExplorerUrls: ['https://songbird-explorer.flare.network'],
+  },
 }
 
 const NetworkModal: FC = () => {
@@ -212,21 +222,22 @@ const NetworkModal: FC = () => {
         <HeadlessUiModal.Header header={i18n._(t`Select a network`)} onClose={toggleNetworkModal} />
         <div className="grid grid-flow-row-dense grid-cols-1 gap-4 overflow-y-auto md:grid-cols-2">
           {[
-            ChainId.ETHEREUM,
-            ChainId.MATIC,
-            ChainId.ARBITRUM,
-            ChainId.AVALANCHE,
-            ChainId.MOONRIVER,
-            ChainId.FANTOM,
-            ChainId.BSC,
-            ChainId.XDAI,
-            ChainId.HARMONY,
-            ChainId.TELOS,
-            ChainId.CELO,
-            ChainId.FUSE,
-            ChainId.OKEX,
-            ChainId.HECO,
-            ChainId.PALM,
+            // ChainId.ETHEREUM,
+            // ChainId.MATIC,
+            // ChainId.ARBITRUM,
+            // ChainId.AVALANCHE,
+            // ChainId.MOONRIVER,
+            // ChainId.FANTOM,
+            // ChainId.BSC,
+            // ChainId.XDAI,
+            // ChainId.HARMONY,
+            // ChainId.TELOS,
+            // ChainId.CELO,
+            // ChainId.FUSE,
+            // ChainId.OKEX,
+            // ChainId.HECO,
+            // ChainId.PALM,
+            ChainId.SGB,
           ].map((key: ChainId, i: number) => {
             if (chainId === key) {
               return (
@@ -255,8 +266,6 @@ const NetworkModal: FC = () => {
                   console.debug(`Switching to chain ${key}`, SUPPORTED_NETWORKS[key])
                   toggleNetworkModal()
                   const params = SUPPORTED_NETWORKS[key]
-                  cookie.set('chainId', key, params)
-
                   try {
                     await library?.send('wallet_switchEthereumChain', [{ chainId: `0x${key.toString(16)}` }, account])
                   } catch (switchError) {

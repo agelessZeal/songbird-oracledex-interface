@@ -23,6 +23,7 @@ const BLOCKCHAIN = {
   [ChainId.ARBITRUM]: 'arbitrum',
   [ChainId.AVALANCHE]: 'avalanche',
   [ChainId.HARDHAT]: 'hardhat',
+  [ChainId.SGB]: 'songbird',
 }
 
 // @ts-ignore TYPE NEEDS FIXING
@@ -67,6 +68,7 @@ const PalmLogo = 'https://raw.githubusercontent.com/sushiswap/logos/main/token/p
 const MovrLogo = 'https://raw.githubusercontent.com/sushiswap/logos/main/token/movr.jpg'
 const FuseLogo = 'https://raw.githubusercontent.com/sushiswap/logos/main/token/fuse.jpg'
 const TelosLogo = 'https://raw.githubusercontent.com/sushiswap/logos/main/token/telos.jpg'
+const SongbirdLogo = 'https://s2.coinmarketcap.com/static/img/coins/64x64/12186.png'
 
 const LOGO: Record<ChainId, string> = {
   [ChainId.ETHEREUM]: EthereumLogo,
@@ -99,6 +101,7 @@ const LOGO: Record<ChainId, string> = {
   [ChainId.FUSE]: FuseLogo,
   [ChainId.TELOS]: TelosLogo,
   [ChainId.HARDHAT]: EthereumLogo,
+  [ChainId.SGB]: SongbirdLogo,
 }
 
 export interface CurrencyLogoProps {
