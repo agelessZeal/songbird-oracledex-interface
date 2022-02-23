@@ -191,6 +191,10 @@ const chains: ChainObject = {
     link: 'https://rpc1.us.telos.net/v2/explore/evm',
     builder: explorers.telos,
   },
+  [ChainId.SGB]: {
+    link: 'https://songbird-explorer.flare.network',
+    builder: explorers.blockscout,
+  },
 }
 
 export function getExplorerLink(
