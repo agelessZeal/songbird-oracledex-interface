@@ -4,7 +4,6 @@ import { WrappedTokenInfo } from 'app/state/lists/wrappedTokenInfo'
 import React, { FunctionComponent, useMemo } from 'react'
 
 import Image from '../../components/Image'
-
 import Logo, { UNKNOWN_ICON } from '../Logo'
 
 const BLOCKCHAIN = {
