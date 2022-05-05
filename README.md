@@ -1,2 +1,2 @@
 # OracleDex on Songbird network
-https://beta.oracleswap.io
+https://oracleswap.io
